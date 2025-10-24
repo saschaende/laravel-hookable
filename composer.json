@@ -1,0 +1,40 @@
+{
+  "name": "saschaende/laravel-hookable",
+  "description": "The WordPress filter/action system in Laravel",
+  "keywords": [
+    "laravel",
+    "wordpress",
+    "action",
+    "events",
+    "event",
+    "filter",
+    "action",
+    "filters",
+    "actions",
+    "hook",
+    "hooks"
+  ],
+  "homepage": "https://github.com/saschaende/laravel-hookable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sascha Ende",
+      "homepage": "https://ende.app"
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+  },
+  "autoload": {
+    "psr-4": {
+      "SaschaEnde\\Hookable\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "SaschaEnde\\Hookable\\HookableServiceProvider"
+      ]
+    }
+  }
+}
