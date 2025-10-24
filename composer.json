@@ -1,6 +1,6 @@
 {
     "name": "saschaende/laravel-hookable",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "The WordPress filter/action system in Laravel",
     "keywords": [
         "laravel",
