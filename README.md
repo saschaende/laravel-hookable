@@ -25,7 +25,7 @@ Actions are hooks that do not modify data. You can add an action like this:
 
 ```php
 use SaschaEnde\Hookable\Facades\Hookable;
-Hookable::addAction('my_action', function ($arg1, $arg2) {
+Hookable::action('my_action', function ($arg1, $arg2) {
     // Do something with $arg1 and $arg2
 });
 ```
@@ -33,7 +33,7 @@ Hookable::addAction('my_action', function ($arg1, $arg2) {
 You can then trigger the action like this:
 
 ```php
-Hookable::doAction('my_action', $arg1, $arg2);
+Hookable::action('my_action', $arg1, $arg2);
 ```
 
 #### Filters
@@ -42,7 +42,7 @@ Filters are hooks that modify data. You can add a filter like this:
 
 ```php
 use SaschaEnde\Hookable\Facades\Hookable;
-Hookable::addFilter('my_filter', function ($value) {
+Hookable::filter('my_filter', function ($value) {
     // Modify $value
     return $value;
 });
@@ -59,7 +59,7 @@ $value = Hookable::applyFilters('my_filter', $value);
 You can specify the priority and number of arguments for your hooks.
 
 ```php
-Hookable::addAction('my_action', function ($arg1, $arg2) {
+Hookable::filter('my_action', function ($arg1, $arg2) {
     // Do something
 }, 20);
 ```
