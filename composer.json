@@ -36,7 +36,10 @@
             "providers": [
                 "SaschaEnde\\Hookable\\HookableServiceProvider"
             ]
-        }
+        },
+        "aliases": {
+            "Hookable": "SaschaEnde\\Hookable\\Facades\\Hookable"
+      }
     },
     "minimum-stability": "stable",
     "prefer-stable": true
