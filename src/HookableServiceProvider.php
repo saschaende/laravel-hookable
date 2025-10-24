@@ -10,7 +10,7 @@ class HookableServiceProvider extends ServiceProvider
     public function register()
     {
         // Bind Hookable as a singleton
-        $this->app->singleton('hookable', fn() => new Hookable());
+        $this->app->singleton(\SaschaEnde\Hookable\Hookable::class, fn() => new Hookable());
     }
 
     public function boot()
