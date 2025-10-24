@@ -2,8 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/saschaende/laravel-hookable.svg?style=flat-square)](https://packagist.org/packages/saschaende/laravel-hookable)
 
-Laravel Hookable is a package that allows you to easily add hooks (actions and filters) to your Laravel applications,
-similar to the hook system in WordPress.
+Laravel Hookable is a package that allows you to use hooks (actions and filters) in Laravel applications – similar to the hook system in WordPress.
 
 ## Installation
 
@@ -13,59 +12,73 @@ You can install the package via Composer:
 composer require saschaende/laravel-hookable
 ```
 
+The package is automatically registered by Laravel (see `composer.json`).
+
+## How it works
+
+- **Actions**: Execute code without modifying data (e.g., for events or extensions).
+- **Filters**: Allow modification of data.
+
+The package provides a `Hookable` facade that exposes the main methods. The binding is handled automatically via the ServiceProvider.
+
 ## Usage
 
-### Adding Hooks
-
-You can add hooks using the `Hookable` facade. There are two types of hooks: actions and filters.
-
-#### Actions
-
-Actions are hooks that do not modify data. You can add an action like this:
+### Adding actions
 
 ```php
 use SaschaEnde\Hookable\Facades\Hookable;
+
 Hookable::action('my_action', function ($arg1, $arg2) {
     // Do something with $arg1 and $arg2
 });
 ```
 
-You can then trigger the action like this:
+To execute the action (e.g., at a specific point in your code):
 
 ```php
-Hookable::action('my_action', $arg1, $arg2);
+Hookable::renderActions('my_action', $arg1, $arg2);
 ```
 
-#### Filters
-
-Filters are hooks that modify data. You can add a filter like this:
+### Adding filters
 
 ```php
 use SaschaEnde\Hookable\Facades\Hookable;
+
 Hookable::filter('my_filter', function ($value) {
     // Modify $value
     return $value;
 });
 ```
 
-You can then apply the filter like this:
+Apply the filter:
 
 ```php
 $value = Hookable::applyFilters('my_filter', $value);
 ```
 
-### Priorities and Arguments
+### Priorities and arguments
 
-You can specify the priority and number of arguments for your hooks.
+You can specify the priority and the number of arguments for hooks:
 
 ```php
-Hookable::filter('my_action', function ($arg1, $arg2) {
+Hookable::action('my_action', function ($arg1, $arg2) {
     // Do something
 }, 20);
 ```
 
-In this example, the action will be executed with a priority of 20 and will receive
-2 arguments.
+In this example, the action will be executed with priority 20 and will receive 2 arguments.
+
+## Blade Directives
+
+The package registers two Blade directives to use hooks directly in Blade templates:
+
+```blade
+@applyFilter('my_filter', $value)
+@doAction('my_action', $arg1, $arg2)
+```
+
+- `@applyFilter('filter_name', $value)`: Applies a filter to a value and outputs the result.
+- `@doAction('action_name', ...)`: Executes an action and outputs its result.
 
 ## Testing
 
@@ -81,5 +94,4 @@ Contributions are welcome! Please submit a pull request or open an issue on GitH
 
 ## License
 
-This package is open-sourced software licensed under the MIT license.
-
+This package is open-source software licensed under the MIT license.
