@@ -1,6 +1,6 @@
 {
     "name": "saschaende/laravel-hookable",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "The WordPress filter/action system in Laravel",
     "keywords": [
         "laravel",
@@ -35,10 +35,7 @@
         "laravel": {
             "providers": [
                 "SaschaEnde\\Hookable\\HookableServiceProvider"
-            ],
-            "aliases": {
-                "Hookable": "SaschaEnde\\Hookable\\Facades\\Hookable"
-            }
+            ]
         }
     },
     "minimum-stability": "stable",

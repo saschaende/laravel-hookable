@@ -17,12 +17,12 @@ class HookableServiceProvider extends ServiceProvider
     {
         // Blade directive for filters
         Blade::directive('applyFilter', function ($expression) {
-            return "<?php echo \\App\\Domains\\Hookable\\Facades\\Hookable::applyFilters($expression); ?>";
+            return "<?php echo \\SaschaEnde\\Hookable\\Facades\\Hookable::applyFilters($expression); ?>";
         });
 
         // Blade directive for actions
         Blade::directive('doAction', function ($expression) {
-            return "<?php echo \\App\\Domains\\Hookable\\Facades\\Hookable::renderActions($expression); ?>";
+            return "<?php echo \\SaschaEnde\\Hookable\\Facades\\Hookable::renderActions($expression); ?>";
         });
     }
 }
